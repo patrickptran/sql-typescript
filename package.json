@@ -3,7 +3,8 @@
   "description": "Build your own SQLite challenge, from CodeCrafters",
   "type": "module",
   "scripts": {
-    "dev": "bun run app/main.ts"
+    "dev": "bun run app/main.ts",
+    "test": "bun test app/main.test.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"
