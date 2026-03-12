@@ -92,12 +92,7 @@ if (command === ".dbinfo") {
 
   // Read page header (8 bytes for leaf page, starting at offset 100)
   const pageHeaderBuffer = new Uint8Array(8);
-  await databaseFileHandler.read(
-    pageHeaderBuffer,
-    0,
-    pageHeaderBuffer.byteLength,
-    100,
-  );
+  await databaseFileHandler.read(pageHeaderBuffer, 0, 8, 100);
   const pageHeaderView = new DataView(pageHeaderBuffer.buffer);
   const numberOfCells = pageHeaderView.getUint16(3);
 
@@ -120,7 +115,7 @@ if (command === ".dbinfo") {
     await databaseFileHandler.read(
       cellBuffer,
       0,
-      cellBuffer.buffer,
+      cellBuffer.length,
       cellOffset,
     );
 
